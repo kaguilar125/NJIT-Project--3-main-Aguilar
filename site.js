@@ -31,15 +31,27 @@ const vue_app = Vue.createApp({
     },
     data() {
       return {
-          // This holds your movies.json data.
-          movies: [],
-          /* ADD ADDITIONAL VARIABLES FOR STEP 3 HERE */
-       
-    }
-  },
-    methods: {
-          /* ADD FUNCTIONS/METHODS FOR STEP 7 HERE */
-    }
+            title: "IMDB + Kevin's Top 8 Movies", 
+            owner: "Kevin", 
+            github: "https://kaguilar125.github.io/NJIT-Project--3-main-Aguilar/", 
+            movies: [] 
+        };
+    },
+
+methods: {
+      
+            like(index) {
+                this.movies[index].likes++; // Increment likes for the movie at the given index
+            },
+            dislike(index) {
+                this.movies[index].dislikes++; // Increment dislikes for the movie at the given index
+            },
+            posterClick(index) {
+                const movie = this.movies[index];
+                movie.posterindex = (movie.posterindex + 1) % movie.posters.length; // Cycle through posters
+            }
+        
+}
 })
 
 vue_app.mount("#vue_app")
